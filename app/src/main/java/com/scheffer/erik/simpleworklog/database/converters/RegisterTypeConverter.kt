@@ -1,6 +1,6 @@
 package com.scheffer.erik.simpleworklog.database.converters
 
-import android.arch.persistence.room.TypeConverter
+import androidx.room.TypeConverter
 import com.scheffer.erik.simpleworklog.RegisterType
 
 class RegisterTypeConverter {

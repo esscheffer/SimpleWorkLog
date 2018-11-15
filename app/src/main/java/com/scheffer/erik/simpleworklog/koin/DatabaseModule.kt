@@ -1,6 +1,6 @@
 package com.scheffer.erik.simpleworklog.koin
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.scheffer.erik.simpleworklog.database.DATABASE_NAME
 import com.scheffer.erik.simpleworklog.database.WorkLogDatabase
 import org.koin.android.ext.koin.androidApplication

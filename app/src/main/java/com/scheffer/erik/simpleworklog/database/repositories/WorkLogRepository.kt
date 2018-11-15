@@ -1,6 +1,6 @@
 package com.scheffer.erik.simpleworklog.database.repositories
 
-import android.support.annotation.WorkerThread
+import androidx.annotation.WorkerThread
 import com.scheffer.erik.simpleworklog.database.daos.WorkLogDao
 import com.scheffer.erik.simpleworklog.database.entities.WorkLog
 
