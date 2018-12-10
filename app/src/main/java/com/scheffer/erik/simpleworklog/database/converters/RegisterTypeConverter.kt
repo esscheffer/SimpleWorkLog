@@ -5,8 +5,8 @@ import com.scheffer.erik.simpleworklog.RegisterType
 
 class RegisterTypeConverter {
     @TypeConverter
-    fun fromString(value: String) = RegisterType.valueOf(value)
+    fun stringToRegisterType(value: String?) = value?.let { RegisterType.valueOf(it) }
 
     @TypeConverter
-    fun calendarToTimestamp(type: RegisterType) = type.name
+    fun registerTypeToString(type: RegisterType?) = type?.name
 }

@@ -8,4 +8,4 @@ import java.util.*
 @Entity
 data class WorkLog(@PrimaryKey(autoGenerate = true) var id: Long? = null,
                    var registerTime: Calendar = Calendar.getInstance(),
-                   var registerType: RegisterType = RegisterType.CHECK_IN)
+                   var registerType: RegisterType = RegisterType.CLOCK_IN)

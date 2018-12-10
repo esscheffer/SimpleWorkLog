@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.WorkShiftEditActivity">
+
+    <!-- view for AdMob Banner Ad -->
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/star_shift_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/start_shift_label"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/start_shift_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:labelFor="@id/start_shift_date_picker_editText"
+        android:text="@string/date_label"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/star_shift_label" />
+
+    <EditText
+        android:id="@+id/start_shift_date_picker_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:importantForAutofill="no"
+        android:inputType="none"
+        ads:layout_constraintEnd_toStartOf="@+id/start_shift_hour_picker_editText"
+        ads:layout_constraintHorizontal_bias="0.5"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/start_shift_date_label"
+        tools:ignore="KeyboardInaccessibleWidget,TextFields"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/end_shift_date_picker_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:importantForAutofill="no"
+        android:inputType="none"
+        ads:layout_constraintEnd_toStartOf="@+id/end_shift_hour_picker_editText"
+        ads:layout_constraintHorizontal_bias="0.5"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/end_shift_date_label"
+        tools:ignore="KeyboardInaccessibleWidget,TextFields"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/end_shift_hour_picker_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="132dp"
+        android:clickable="true"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:importantForAutofill="no"
+        android:inputType="none"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintHorizontal_bias="0.5"
+        ads:layout_constraintStart_toEndOf="@+id/end_shift_date_picker_editText"
+        ads:layout_constraintTop_toBottomOf="@+id/end_shift_date_label"
+        tools:ignore="KeyboardInaccessibleWidget,TextFields"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/start_shift_hour_picker_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="none"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintHorizontal_bias="0.5"
+        ads:layout_constraintStart_toEndOf="@+id/start_shift_date_picker_editText"
+        ads:layout_constraintTop_toBottomOf="@+id/start_shift_date_label"
+        tools:ignore="KeyboardInaccessibleWidget,TextFields"
+        tools:targetApi="o" />
+
+    <TextView
+        android:id="@+id/start_shift_hour_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:labelFor="@id/start_shift_hour_picker_editText"
+        android:text="@string/time_label"
+        ads:layout_constraintStart_toStartOf="@+id/start_shift_hour_picker_editText"
+        ads:layout_constraintTop_toBottomOf="@+id/star_shift_label" />
+
+    <TextView
+        android:id="@+id/end_shift_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/end_shift_label"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/start_shift_date_picker_editText" />
+
+    <TextView
+        android:id="@+id/end_shift_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:labelFor="@id/end_shift_date_picker_editText"
+        android:text="@string/date_label"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/end_shift_label" />
+
+    <TextView
+        android:id="@+id/ent_shift_hour_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:labelFor="@id/end_shift_hour_picker_editText"
+        android:text="@string/time_label"
+        ads:layout_constraintStart_toStartOf="@+id/end_shift_hour_picker_editText"
+        ads:layout_constraintTop_toBottomOf="@+id/end_shift_label" />
+
+    <ImageButton
+        android:id="@+id/clear_end_shift_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/clear_end_shift_info"
+        android:minWidth="32dp"
+        android:minHeight="32dp"
+        ads:layout_constraintBottom_toBottomOf="@+id/end_shift_label"
+        ads:layout_constraintStart_toEndOf="@+id/end_shift_label"
+        ads:layout_constraintTop_toTopOf="@+id/end_shift_label"
+        ads:srcCompat="@drawable/ic_delete_empty_black_24dp" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/save"
+        ads:layout_constraintEnd_toStartOf="@+id/delete_button"
+        ads:layout_constraintHorizontal_bias="0.5"
+        ads:layout_constraintHorizontal_chainStyle="packed"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/end_shift_date_picker_editText" />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/delete"
+        android:visibility="gone"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintHorizontal_bias="0.5"
+        ads:layout_constraintStart_toEndOf="@+id/save_button"
+        ads:layout_constraintTop_toBottomOf="@+id/end_shift_date_picker_editText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

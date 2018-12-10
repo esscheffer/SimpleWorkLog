@@ -5,8 +5,9 @@ import java.util.*
 
 class CalendarConverter {
     @TypeConverter
-    fun fromTimestamp(value: Long) = Calendar.getInstance().apply { timeInMillis = value }
+    fun timestampToCalendar(value: Long?) =
+            value?.let { Calendar.getInstance().apply { timeInMillis = it } }
 
     @TypeConverter
-    fun calendarToTimestamp(date: Calendar) = date.timeInMillis
+    fun calendarToTimestamp(date: Calendar?) = date?.timeInMillis
 }

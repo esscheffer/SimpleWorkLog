@@ -10,4 +10,22 @@ class WorkLogRepository(private val workLogDao: WorkLogDao) {
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(workLog: WorkLog) = workLogDao.insert(workLog)
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun persist(workLog: WorkLog): Long {
+        val workLogId = workLog.id
+        return if (workLogId == null) {
+            workLogDao.insert(workLog)
+        } else {
+            workLogDao.update(workLog)
+            workLogId
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun delete(workLog: WorkLog) = workLogDao.delete(workLog)
+
+    fun getById(id: Long) = workLogDao.findById(id)
 }

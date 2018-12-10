@@ -7,9 +7,11 @@ import kotlinx.coroutines.launch
 
 class WorkShiftEditViewModel(private val repository: WorkShiftRepository) : BaseCoroutineViewModel() {
     /**
-     * Launching a new coroutine to insert the data in a non-blocking way
+     * Launching a new coroutine to persist the data in a non-blocking way
      */
-    fun insert(workShift: WorkShift) = scope.launch(Dispatchers.IO) {
-        repository.insert(workShift)
+    fun persist(workShift: WorkShift) = scope.launch(Dispatchers.IO) {
+        repository.persist(workShift)
     }
+
+    fun getWorkShift(id: Long) = repository.getById(id)
 }

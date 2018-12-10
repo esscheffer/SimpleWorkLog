@@ -9,5 +9,17 @@ class WorkShiftRepository(private val workShiftDao: WorkShiftDao) {
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    fun insert(entity: WorkShift) = workShiftDao.insert(entity)
+    suspend fun insert(entity: WorkShift) = workShiftDao.insert(entity)
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun persist(workShift: WorkShift) {
+        if (workShift.id == null) {
+            workShiftDao.insert(workShift)
+        } else {
+            workShiftDao.update(workShift)
+        }
+    }
+
+    fun getById(id: Long) = workShiftDao.findById(id)
 }
