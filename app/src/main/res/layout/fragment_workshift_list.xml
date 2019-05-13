@@ -13,7 +13,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:context=".ui.fragments.WorkShiftFragment"
+        tools:context=".ui.fragments.WorkShiftListFragment"
         tools:listitem="@layout/workshift_item" />
 
     <com.leinardi.android.speeddial.SpeedDialOverlayLayout

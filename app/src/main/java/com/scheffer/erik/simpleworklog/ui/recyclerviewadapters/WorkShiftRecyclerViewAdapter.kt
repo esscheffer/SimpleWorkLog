@@ -1,7 +1,6 @@
 package com.scheffer.erik.simpleworklog.ui.recyclerviewadapters
 
 
-import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.scheffer.erik.simpleworklog.R
 import com.scheffer.erik.simpleworklog.database.entities.WorkShift
+import com.scheffer.erik.simpleworklog.utils.getDefaultDateString
+import com.scheffer.erik.simpleworklog.utils.getDefaultTimeString
 import kotlinx.android.synthetic.main.workshift_item.view.*
 
 /**
@@ -27,16 +28,13 @@ class WorkShiftRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val workShift = workShifts[position]
         with(holder) {
-            val dateFormat = DateFormat.getDateFormat(holder.itemView.context)
-            val timeFormat = DateFormat.getTimeFormat(holder.itemView.context)
-
-            enterDateTextView.text = dateFormat.format(workShift.enterTime.time)
-            enterHourTextView.text = timeFormat.format(workShift.enterTime.time)
+            enterDateTextView.text = workShift.enterTime.getDefaultDateString()
+            enterHourTextView.text = workShift.enterTime.getDefaultTimeString()
             val exitTime = workShift.exitTime
             if (exitTime != null) {
-                exitDateTextView.text = dateFormat.format(exitTime.time)
+                exitDateTextView.text = exitTime.getDefaultDateString()
                 exitHourTextView.visibility = View.VISIBLE
-                exitHourTextView.text = timeFormat.format(exitTime.time)
+                exitHourTextView.text = exitTime.getDefaultTimeString()
             } else {
                 exitDateTextView.text = holder.itemView.context.getString(R.string.on_going)
                 exitHourTextView.visibility = View.GONE
@@ -46,7 +44,7 @@ class WorkShiftRecyclerViewAdapter(
 
     override fun getItemCount(): Int = workShifts.size
 
-    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val enterDateTextView: TextView = view.enter_date_text
         val enterHourTextView: TextView = view.enter_hour_text
         val exitDateTextView: TextView = view.exit_date_text

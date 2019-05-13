@@ -4,7 +4,7 @@ import androidx.room.Room
 import com.scheffer.erik.simpleworklog.database.DATABASE_NAME
 import com.scheffer.erik.simpleworklog.database.WorkLogDatabase
 import org.koin.android.ext.koin.androidApplication
-import org.koin.dsl.module.module
+import org.koin.dsl.module
 
 val databaseModule = module {
     // Room database

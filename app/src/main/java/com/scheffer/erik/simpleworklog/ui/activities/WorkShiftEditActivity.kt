@@ -1,20 +1,17 @@
 package com.scheffer.erik.simpleworklog.ui.activities
 
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.android.gms.ads.AdRequest
-import com.scheffer.erik.simpleutils.showDatePickDialog
-import com.scheffer.erik.simpleutils.showTimePickDialog
 import com.scheffer.erik.simpleworklog.R
 import com.scheffer.erik.simpleworklog.database.entities.WorkShift
-import com.scheffer.erik.simpleworklog.utils.observeOnce
+import com.scheffer.erik.simpleworklog.utils.*
 import com.scheffer.erik.simpleworklog.viewmodels.WorkShiftEditViewModel
 import kotlinx.android.synthetic.main.activity_work_shift_edit.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
+import org.threeten.bp.OffsetDateTime
 
 const val ARG_WORK_SHIFT_ID = "work_shift_id"
 
@@ -45,7 +42,7 @@ class WorkShiftEditActivity : AppCompatActivity() {
         }
 
         end_shift_date_picker_editText.setOnClickListener {
-            showDatePickDialog(workShift.exitTime ?: Calendar.getInstance()) { pickedCalendar ->
+            showDatePickDialog(workShift.exitTime ?: OffsetDateTime.now()) { pickedCalendar ->
                 if (workShift.exitTime == null) {
                     workShift.exitTime = pickedCalendar
                 }
@@ -54,7 +51,7 @@ class WorkShiftEditActivity : AppCompatActivity() {
         }
 
         end_shift_hour_picker_editText.setOnClickListener {
-            showTimePickDialog(workShift.exitTime ?: Calendar.getInstance()) {pickedCalendar ->
+            showTimePickDialog(workShift.exitTime ?: OffsetDateTime.now()) {pickedCalendar ->
                 if (workShift.exitTime == null) {
                     workShift.exitTime = pickedCalendar
                 }
@@ -75,14 +72,12 @@ class WorkShiftEditActivity : AppCompatActivity() {
     }
 
     private fun reloadUi() {
-        val dateFormat = DateFormat.getDateFormat(this)
-        val hourFormat = DateFormat.getTimeFormat(this)
-        start_shift_date_picker_editText.setText(dateFormat.format(workShift.enterTime.time))
-        start_shift_hour_picker_editText.setText(hourFormat.format(workShift.enterTime.time))
+        start_shift_date_picker_editText.setText(workShift.enterTime.getDefaultDateString())
+        start_shift_hour_picker_editText.setText(workShift.enterTime.getDefaultTimeString())
         val exitTime = workShift.exitTime
         if (exitTime != null) {
-            end_shift_date_picker_editText.setText(dateFormat.format(workShift.enterTime.time))
-            end_shift_hour_picker_editText.setText(hourFormat.format(workShift.enterTime.time))
+            end_shift_date_picker_editText.setText(workShift.enterTime.getDefaultDateString())
+            end_shift_hour_picker_editText.setText(workShift.enterTime.getDefaultTimeString())
         } else {
             end_shift_date_picker_editText.setText(R.string.on_going)
             end_shift_hour_picker_editText.setText(R.string.on_going)

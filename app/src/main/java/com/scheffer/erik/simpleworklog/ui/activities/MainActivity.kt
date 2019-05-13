@@ -15,7 +15,7 @@ import com.scheffer.erik.simpleworklog.viewmodels.WorkShiftEditViewModel
 import com.scheffer.erik.simpleworklog.viewmodels.WorkShiftListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
+import org.threeten.bp.OffsetDateTime
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,26 +32,26 @@ class MainActivity : AppCompatActivity() {
         workLogListViewModel.allWorkLogs.observe(this, Observer { workLogs ->
             if (workLogs.isNullOrEmpty()) {
                 // if there is no data, persist fake data
-                val totalFakeData = 11
-                val c = Calendar.getInstance()
-                c.set(Calendar.HOUR_OF_DAY, 8)
-                c.set(Calendar.MINUTE, 0)
-                c.set(Calendar.SECOND, 0)
-                c.add(Calendar.DAY_OF_YEAR, -totalFakeData)
+                val totalFakeData = 11L
+                var dateTime = OffsetDateTime.now()
+                        .withHour(8)
+                        .withMinute(0)
+                        .withSecond(0)
+                        .minusDays(totalFakeData)
 
                 for (i in 1..totalFakeData) {
                     val workLog = WorkLog()
-                    workLog.registerTime = c.clone() as Calendar
+                    workLog.registerTime = dateTime
                     workLog.registerType = RegisterType.CLOCK_IN
                     workLogEditViewModel.persist(workLog) {}
 
                     if (i != totalFakeData) {
                         val workLogOut = WorkLog()
-                        workLogOut.registerTime = (c.clone() as Calendar).apply { add(Calendar.HOUR_OF_DAY, 8) }
+                        workLogOut.registerTime = dateTime.plusHours(8)
                         workLogOut.registerType = RegisterType.CLOCK_OUT
                         workLogEditViewModel.persist(workLogOut) {}
                     }
-                    c.add(Calendar.DAY_OF_YEAR, 1)
+                    dateTime = dateTime.plusDays(1)
                 }
             }
             Log.i("WOKRLOG", "$workLogs")
@@ -60,21 +60,21 @@ class MainActivity : AppCompatActivity() {
         workShiftListViewModel.allWorkShifts.observe(this, Observer { workShifts ->
             if (workShifts.isNullOrEmpty()) {
                 // if there is no data, persist fake data
-                val totalFakeData = 10
-                val c = Calendar.getInstance()
-                c.set(Calendar.HOUR_OF_DAY, 8)
-                c.set(Calendar.MINUTE, 0)
-                c.set(Calendar.SECOND, 0)
-                c.add(Calendar.DAY_OF_YEAR, -totalFakeData)
+                val totalFakeData = 10L
+                var dateTime = OffsetDateTime.now()
+                        .withHour(8)
+                        .withMinute(0)
+                        .withSecond(0)
+                        .minusDays(totalFakeData)
 
                 for (i in 1..totalFakeData) {
                     val workShift = WorkShift()
-                    workShift.enterTime = c.clone() as Calendar
+                    workShift.enterTime = dateTime
                     if (i != totalFakeData) {
-                        workShift.exitTime = (c.clone() as Calendar).apply { add(Calendar.HOUR_OF_DAY, 8) }
+                        workShift.exitTime = dateTime.plusHours(8)
                     }
                     workShiftEditViewModel.persist(workShift)
-                    c.add(Calendar.DAY_OF_YEAR, 1)
+                    dateTime = dateTime.plusDays(1)
                 }
             }
             Log.i("WORKSHIFT", "$workShifts")

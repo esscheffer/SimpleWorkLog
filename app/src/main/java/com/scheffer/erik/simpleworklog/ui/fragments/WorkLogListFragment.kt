@@ -17,7 +17,7 @@ import com.scheffer.erik.simpleworklog.viewmodels.WorkLogListViewModel
 import kotlinx.android.synthetic.main.fragment_worklog_list.view.*
 import org.jetbrains.anko.startActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
+import org.threeten.bp.OffsetDateTime
 
 /**
  * A fragment representing a list of Work Logs.
@@ -46,11 +46,11 @@ class WorkLogListFragment : Fragment() {
             when (actionItem.id) {
                 R.id.action_fast_clock_in ->
                     workLogListViewModel.persist(
-                            WorkLog(registerTime = Calendar.getInstance(),
+                            WorkLog(registerTime = OffsetDateTime.now(),
                                     registerType = RegisterType.CLOCK_IN))
                 R.id.action_fast_clock_out ->
                     workLogListViewModel.persist(
-                            WorkLog(registerTime = Calendar.getInstance(),
+                            WorkLog(registerTime = OffsetDateTime.now(),
                                     registerType = RegisterType.CLOCK_OUT))
                 R.id.action_new_work_log -> activity?.startActivity<WorkLogEditActivity>()
             }

@@ -1,7 +1,6 @@
 package com.scheffer.erik.simpleworklog.ui.recyclerviewadapters
 
 
-import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,8 @@ import com.scheffer.erik.simpleworklog.RegisterType
 import com.scheffer.erik.simpleworklog.database.entities.WorkLog
 import com.scheffer.erik.simpleworklog.ui.activities.ARG_WORK_LOG_ID
 import com.scheffer.erik.simpleworklog.ui.activities.WorkLogEditActivity
+import com.scheffer.erik.simpleworklog.utils.getDefaultDateString
+import com.scheffer.erik.simpleworklog.utils.getDefaultTimeString
 import kotlinx.android.synthetic.main.worklog_item.view.*
 import org.jetbrains.anko.startActivity
 
@@ -39,8 +40,8 @@ class WorkLogRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val workLog = workLogs[position]
-        holder.registerDateText.text = DateFormat.getDateFormat(holder.itemView.context).format(workLog.registerTime.time)
-        holder.registerHourText.text = DateFormat.getTimeFormat(holder.itemView.context).format(workLog.registerTime.time)
+        holder.registerDateText.text = workLog.registerTime.getDefaultDateString()
+        holder.registerHourText.text = workLog.registerTime.getDefaultTimeString()
         holder.registerTypeText.text = when (workLog.registerType) {
             RegisterType.CLOCK_IN -> holder.itemView.context.getString(R.string.clock_in)
             RegisterType.CLOCK_OUT -> holder.itemView.context.getString(R.string.clock_out)

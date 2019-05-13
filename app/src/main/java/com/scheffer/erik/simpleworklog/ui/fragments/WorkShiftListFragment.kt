@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A fragment representing a list of Work Shifts.
  */
-class WorkShiftFragment : Fragment() {
+class WorkShiftListFragment : Fragment() {
 
     private val workShiftListViewModel by viewModel<WorkShiftListViewModel>()
 

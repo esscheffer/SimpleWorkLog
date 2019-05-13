@@ -21,7 +21,6 @@
 
     <com.leinardi.android.speeddial.SpeedDialView
         android:id="@+id/work_log_fab"
-        app:tint="#FFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

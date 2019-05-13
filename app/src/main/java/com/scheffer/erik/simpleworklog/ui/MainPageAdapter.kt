@@ -6,13 +6,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.scheffer.erik.simpleworklog.R
 import com.scheffer.erik.simpleworklog.ui.fragments.WorkLogListFragment
-import com.scheffer.erik.simpleworklog.ui.fragments.WorkShiftFragment
+import com.scheffer.erik.simpleworklog.ui.fragments.WorkShiftListFragment
 
 class MainPageAdapter(fm: FragmentManager, private val context: Context) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> WorkLogListFragment()
-            else -> return WorkShiftFragment()
+            else -> return WorkShiftListFragment()
         }
     }
 

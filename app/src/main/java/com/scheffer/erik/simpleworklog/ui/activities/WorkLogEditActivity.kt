@@ -1,18 +1,15 @@
 package com.scheffer.erik.simpleworklog.ui.activities
 
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.android.gms.ads.AdRequest
-import com.scheffer.erik.simpleutils.showDatePickDialog
-import com.scheffer.erik.simpleutils.showTimePickDialog
 import com.scheffer.erik.simpleworklog.R
 import com.scheffer.erik.simpleworklog.RegisterType
 import com.scheffer.erik.simpleworklog.database.entities.WorkLog
-import com.scheffer.erik.simpleworklog.utils.observeOnce
+import com.scheffer.erik.simpleworklog.utils.*
 import com.scheffer.erik.simpleworklog.viewmodels.WorkLogEditViewModel
 import kotlinx.android.synthetic.main.activity_work_log_edit.*
 import org.jetbrains.anko.toast
@@ -80,8 +77,8 @@ class WorkLogEditActivity : AppCompatActivity() {
     }
 
     private fun reloadUi() {
-        date_picker_editText.setText(DateFormat.getDateFormat(this).format(workLog.registerTime.time))
-        hour_picker_editText.setText(DateFormat.getTimeFormat(this).format(workLog.registerTime.time))
+        date_picker_editText.setText(workLog.registerTime.getDefaultDateString())
+        hour_picker_editText.setText(workLog.registerTime.getDefaultTimeString())
         workLog_type_spinner.selectedIndex = workLog.registerType.ordinal
     }
 }
