@@ -19,7 +19,9 @@ class WorkLogEditViewModel(private val repository: WorkLogRepository)
     fun delete(workLog: WorkLog, onComplete: () -> Unit) =
             scope.launch(Dispatchers.IO) {
                 repository.delete(workLog)
-                onComplete()
+                launch(Dispatchers.Main) {
+                    onComplete()
+                }
             }
 
     fun getWorkLog(id: Long) = repository.getById(id)

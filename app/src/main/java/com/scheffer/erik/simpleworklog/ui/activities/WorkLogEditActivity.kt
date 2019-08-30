@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_work_log_edit.*
 import org.jetbrains.anko.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 const val ARG_WORK_LOG_ID = "work_log_id"
 
 class WorkLogEditActivity : AppCompatActivity() {

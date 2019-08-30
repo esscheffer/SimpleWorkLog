@@ -32,7 +32,7 @@ class MyApplication : MultiDexApplication() {
         startKoin {
             androidLogger()
             androidContext(this@MyApplication)
-            modules(databaseModule, workLogModule, workShiftModule)
+            modules(listOf(databaseModule, workLogModule, workShiftModule))
         }
     }
 }

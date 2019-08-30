@@ -35,6 +35,24 @@ class WorkShiftListFragment : Fragment() {
                 workShifts?.let { adapter.setWorkShifts(it) }
             })
         }
+
+//        view.work_log_fab.inflate(R.menu.work_log_fab_menu)
+//        view.work_log_fab.setOnActionSelectedListener { actionItem ->
+//            when (actionItem.id) {
+//                R.id.action_fast_clock_in ->
+//                    workShiftListViewModel.persist(
+//                            WorkLog(registerTime = Calendar.getInstance(),
+//                                    registerType = RegisterType.CLOCK_IN))
+//                R.id.action_fast_clock_out ->
+//                    workShiftListViewModel.persist(
+//                            WorkLog(registerTime = Calendar.getInstance(),
+//                                    registerType = RegisterType.CLOCK_OUT))
+//                R.id.action_new_work_log -> activity?.startActivity<WorkLogEditActivity>()
+//            }
+//
+//            false
+//        }
+
         return view
     }
 }

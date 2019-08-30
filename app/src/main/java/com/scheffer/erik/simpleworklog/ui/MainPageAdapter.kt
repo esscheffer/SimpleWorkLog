@@ -8,7 +8,8 @@ import com.scheffer.erik.simpleworklog.R
 import com.scheffer.erik.simpleworklog.ui.fragments.WorkLogListFragment
 import com.scheffer.erik.simpleworklog.ui.fragments.WorkShiftListFragment
 
-class MainPageAdapter(fm: FragmentManager, private val context: Context) : FragmentPagerAdapter(fm) {
+class MainPageAdapter(fm: FragmentManager, private val context: Context)
+    : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> WorkLogListFragment()
