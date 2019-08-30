@@ -22,4 +22,6 @@ class WorkShiftRepository(private val workShiftDao: WorkShiftDao) {
     }
 
     fun getById(id: Long) = workShiftDao.findById(id)
+
+    fun getOpenWorkShift() = workShiftDao.findOpenWorkShift()
 }

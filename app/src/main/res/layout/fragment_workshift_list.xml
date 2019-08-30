@@ -6,12 +6,10 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/work_log_list"
+        android:id="@+id/work_shift_list"
         android:name="com.scheffer.erik.simpleworklog.ui.fragments.WorkShiftFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:context=".ui.fragments.WorkShiftListFragment"
         tools:listitem="@layout/workshift_item" />
@@ -23,7 +21,6 @@
 
     <com.leinardi.android.speeddial.SpeedDialView
         android:id="@+id/work_shift_fab"
-        app:tint="#FFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

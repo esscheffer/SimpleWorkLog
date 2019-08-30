@@ -6,7 +6,7 @@ import com.scheffer.erik.simpleworklog.database.entities.WorkShift
 
 @Dao
 interface WorkShiftDao {
-    @Query("SELECT * FROM WorkShift")
+    @Query("SELECT * FROM WorkShift ORDER BY enterTime DESC")
     fun getAll(): LiveData<List<WorkShift>>
 
     @Insert
@@ -20,4 +20,7 @@ interface WorkShiftDao {
 
     @Query("SELECT * FROM WorkShift WHERE id = :id")
     fun findById(id: Long): LiveData<WorkShift?>
+
+    @Query("SELECT * FROM WorkShift WHERE exitTime IS NULL")
+    fun findOpenWorkShift(): LiveData<WorkShift>
 }
