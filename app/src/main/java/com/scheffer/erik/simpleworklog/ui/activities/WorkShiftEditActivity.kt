@@ -10,6 +10,7 @@ import com.scheffer.erik.simpleworklog.database.entities.WorkShift
 import com.scheffer.erik.simpleworklog.utils.*
 import com.scheffer.erik.simpleworklog.viewmodels.WorkShiftEditViewModel
 import kotlinx.android.synthetic.main.activity_work_shift_edit.*
+import org.jetbrains.anko.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.threeten.bp.OffsetDateTime
 
@@ -51,7 +52,7 @@ class WorkShiftEditActivity : AppCompatActivity() {
         }
 
         end_shift_hour_picker_editText.setOnClickListener {
-            showTimePickDialog(workShift.exitTime ?: OffsetDateTime.now()) {pickedCalendar ->
+            showTimePickDialog(workShift.exitTime ?: OffsetDateTime.now()) { pickedCalendar ->
                 if (workShift.exitTime == null) {
                     workShift.exitTime = pickedCalendar
                 }
@@ -63,6 +64,21 @@ class WorkShiftEditActivity : AppCompatActivity() {
             workShift.exitTime = null
             reloadUi()
         }
+
+        save_button.setOnClickListener {
+            workShiftEditViewModel.persist(workShift) {
+                toast(R.string.work_shift_successful_save)
+                finish()
+            }
+        }
+        delete_button.setOnClickListener {
+            workShiftEditViewModel.delete(workShift) {
+                toast(R.string.work_shift_successful_delete)
+                finish()
+            }
+        }
+
+        reloadUi()
 
         // Load an ad into the AdMob banner view.
         val adRequest = AdRequest.Builder()
@@ -76,8 +92,8 @@ class WorkShiftEditActivity : AppCompatActivity() {
         start_shift_hour_picker_editText.setText(workShift.enterTime.getDefaultTimeString())
         val exitTime = workShift.exitTime
         if (exitTime != null) {
-            end_shift_date_picker_editText.setText(workShift.enterTime.getDefaultDateString())
-            end_shift_hour_picker_editText.setText(workShift.enterTime.getDefaultTimeString())
+            end_shift_date_picker_editText.setText(exitTime.getDefaultDateString())
+            end_shift_hour_picker_editText.setText(exitTime.getDefaultTimeString())
         } else {
             end_shift_date_picker_editText.setText(R.string.on_going)
             end_shift_hour_picker_editText.setText(R.string.on_going)

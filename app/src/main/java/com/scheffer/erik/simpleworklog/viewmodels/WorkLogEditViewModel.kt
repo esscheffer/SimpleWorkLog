@@ -8,20 +8,16 @@ import kotlinx.coroutines.launch
 class WorkLogEditViewModel(private val repository: WorkLogRepository)
     : BaseCoroutineViewModel() {
 
-    fun persist(workLog: WorkLog, onSave: (id: Long) -> Unit) =
+    fun persist(workLog: WorkLog, onSave: () -> Unit) =
             scope.launch(Dispatchers.IO) {
-                val workLogId = repository.persist(workLog)
-                launch(Dispatchers.Main) {
-                    onSave(workLogId)
-                }
+                repository.persist(workLog)
+                launch(Dispatchers.Main) { onSave() }
             }
 
     fun delete(workLog: WorkLog, onComplete: () -> Unit) =
             scope.launch(Dispatchers.IO) {
                 repository.delete(workLog)
-                launch(Dispatchers.Main) {
-                    onComplete()
-                }
+                launch(Dispatchers.Main) { onComplete() }
             }
 
     fun getWorkLog(id: Long) = repository.getById(id)

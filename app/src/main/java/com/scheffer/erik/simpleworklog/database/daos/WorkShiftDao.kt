@@ -15,6 +15,9 @@ interface WorkShiftDao {
     @Query("DELETE FROM WorkShift")
     fun deleteAll()
 
+    @Delete
+    fun delete(workShift: WorkShift)
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(workShift: WorkShift)
 

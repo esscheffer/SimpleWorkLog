@@ -124,12 +124,14 @@
     <string name="new_work_shift">New work shift</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
-    <string name="work_log_successful_delete">Work Log successful deleted</string>
-    <string name="work_log_successful_save">Work Log successful saved</string>
+    <string name="work_log_successful_delete">Work Log successfully deleted</string>
+    <string name="work_log_successful_save">Work Log successfully saved</string>
     <string name="work_shift_only_one_open_allowed">Only one open shift is allowed</string>
     <string name="work_shift_open_shift_not_found">No open shift found to end</string>
+    <string name="work_shift_successful_delete">Work Shift successfully deleted</string>
+    <string name="work_shift_successful_save">Work Shift successfully saved</string>
     <string name="problem_saving_log">There was a problem saving the Work Log. Try again.</string>
-    <string name="title_activity_work_shift_edit">WorkShiftEditActivity</string>
+    <string name="title_activity_work_shift_edit">Work Shift</string>
     <string name="clear_end_shift_info">Clear end shift information</string>
     <string name="start_shift_label">Start Shift</string>
     <string name="end_shift_label">End Shift</string>

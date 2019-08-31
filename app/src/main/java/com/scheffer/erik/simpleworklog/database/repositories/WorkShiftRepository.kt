@@ -21,6 +21,10 @@ class WorkShiftRepository(private val workShiftDao: WorkShiftDao) {
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun delete(workShift: WorkShift) = workShiftDao.delete(workShift)
+
     fun getById(id: Long) = workShiftDao.findById(id)
 
     fun getOpenWorkShift() = workShiftDao.findOpenWorkShift()

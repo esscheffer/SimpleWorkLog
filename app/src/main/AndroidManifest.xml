@@ -37,7 +37,12 @@
 
         <activity
             android:name=".ui.activities.WorkShiftEditActivity"
-            android:label="@string/title_activity_work_shift_edit" />
+            android:label="@string/title_activity_work_shift_edit"
+            android:parentActivityName=".ui.activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.scheffer.erik.simpleworklog.ui.activities.MainActivity" />
+        </activity>
 
         <!-- Include the AdActivity configChanges and theme. -->
         <activity

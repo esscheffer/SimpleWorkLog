@@ -9,9 +9,17 @@ class WorkShiftEditViewModel(private val repository: WorkShiftRepository) : Base
     /**
      * Launching a new coroutine to persist the data in a non-blocking way
      */
-    fun persist(workShift: WorkShift) = scope.launch(Dispatchers.IO) {
-        repository.persist(workShift)
-    }
+    fun persist(workShift: WorkShift, onSave: () -> Unit) =
+            scope.launch(Dispatchers.IO) {
+                repository.persist(workShift)
+                launch(Dispatchers.Main) { onSave() }
+            }
+
+    fun delete(workShift: WorkShift, onComplete: () -> Unit) =
+            scope.launch(Dispatchers.IO) {
+                repository.delete(workShift)
+                launch(Dispatchers.Main) { onComplete() }
+            }
 
     fun getWorkShift(id: Long) = repository.getById(id)
 }

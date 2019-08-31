@@ -23,10 +23,10 @@ class WorkLogRecyclerViewAdapter(
         private var workLogs: List<WorkLog> = emptyList())
     : RecyclerView.Adapter<WorkLogRecyclerViewAdapter.ViewHolder>() {
 
-    private val mOnClickListener: View.OnClickListener
+    private val viewOnClickListener: View.OnClickListener
 
     init {
-        mOnClickListener = View.OnClickListener { v ->
+        viewOnClickListener = View.OnClickListener { v ->
             val workLog = v.tag as WorkLog
             v.context.startActivity<WorkLogEditActivity>(ARG_WORK_LOG_ID to workLog.id)
         }
@@ -40,16 +40,17 @@ class WorkLogRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val workLog = workLogs[position]
-        holder.registerDateText.text = workLog.registerTime.getDefaultDateString()
-        holder.registerHourText.text = workLog.registerTime.getDefaultTimeString()
-        holder.registerTypeText.text = when (workLog.registerType) {
-            RegisterType.CLOCK_IN -> holder.itemView.context.getString(R.string.clock_in)
-            RegisterType.CLOCK_OUT -> holder.itemView.context.getString(R.string.clock_out)
-        }
-
-        with(holder.view) {
-            tag = workLog
-            setOnClickListener(mOnClickListener)
+        with(holder) {
+            registerDateText.text = workLog.registerTime.getDefaultDateString()
+            registerHourText.text = workLog.registerTime.getDefaultTimeString()
+            registerTypeText.text = when (workLog.registerType) {
+                RegisterType.CLOCK_IN -> itemView.context.getString(R.string.clock_in)
+                RegisterType.CLOCK_OUT -> itemView.context.getString(R.string.clock_out)
+            }
+            with(view) {
+                tag = workLog
+                setOnClickListener(viewOnClickListener)
+            }
         }
     }
 

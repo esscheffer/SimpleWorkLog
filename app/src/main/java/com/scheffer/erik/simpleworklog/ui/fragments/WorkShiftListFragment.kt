@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scheffer.erik.simpleworklog.R
 import com.scheffer.erik.simpleworklog.database.entities.WorkShift
+import com.scheffer.erik.simpleworklog.ui.activities.WorkShiftEditActivity
 import com.scheffer.erik.simpleworklog.ui.recyclerviewadapters.WorkShiftRecyclerViewAdapter
 import com.scheffer.erik.simpleworklog.utils.observeOnce
 import com.scheffer.erik.simpleworklog.viewmodels.WorkShiftListViewModel
 import kotlinx.android.synthetic.main.fragment_workshift_list.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.threeten.bp.OffsetDateTime
@@ -60,10 +62,7 @@ class WorkShiftListFragment : Fragment() {
                             activity?.toast(R.string.work_shift_open_shift_not_found)
                         }
                     })
-//                    workShiftListViewModel.persist(
-//                            WorkLog(registerTime = Calendar.getInstance(),
-//                                    registerType = RegisterType.CLOCK_OUT))
-//                R.id.action_new_work_log -> activity?.startActivity<WorkLogEditActivity>()
+                R.id.action_new_work_shift -> activity?.startActivity<WorkShiftEditActivity>()
             }
 
             false

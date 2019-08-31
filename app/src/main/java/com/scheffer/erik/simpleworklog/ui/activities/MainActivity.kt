@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     if (i != totalFakeData) {
                         workShift.exitTime = dateTime.plusHours(8)
                     }
-                    workShiftEditViewModel.persist(workShift)
+                    workShiftEditViewModel.persist(workShift) {}
                     dateTime = dateTime.plusDays(1)
                 }
             }
