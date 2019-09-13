@@ -7,20 +7,20 @@
         android:id="@+id/action_fast_clock_out"
         android:icon="@drawable/ic_clock_out_white_24dp"
         android:orderInCategory="100"
-        android:title="@string/fast_clock_out"
+        android:title="@string/end_shift"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_fast_clock_in"
         android:icon="@drawable/ic_clock_in_white_24dp"
         android:orderInCategory="100"
-        android:title="@string/fast_clock_in"
+        android:title="@string/start_shift"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_new_work_shift"
         android:icon="@drawable/ic_add_white_24dp"
         android:orderInCategory="100"
-        android:title="@string/new_work_log"
+        android:title="@string/new_work_shift"
         app:showAsAction="always" />
 </menu>

@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.multidex.MultiDexApplication
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.scheffer.erik.simpleworklog.koin.databaseModule
+import com.scheffer.erik.simpleworklog.koin.geofenceModule
 import com.scheffer.erik.simpleworklog.koin.workLogModule
 import com.scheffer.erik.simpleworklog.koin.workShiftModule
 import org.koin.android.ext.koin.androidContext
@@ -32,7 +33,7 @@ class MyApplication : MultiDexApplication() {
         startKoin {
             androidLogger()
             androidContext(this@MyApplication)
-            modules(listOf(databaseModule, workLogModule, workShiftModule))
+            modules(listOf(databaseModule, workLogModule, workShiftModule, geofenceModule))
         }
     }
 }
